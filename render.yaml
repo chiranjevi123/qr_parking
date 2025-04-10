@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: qr-parking
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn qr_parking.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///db.sqlite3
