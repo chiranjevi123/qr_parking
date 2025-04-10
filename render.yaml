@@ -5,5 +5,11 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn qr_parking.wsgi:application
     envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: qr_parking.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: SECRET_KEY
+        generateValue: true
       - key: DATABASE_URL
         value: sqlite:///db.sqlite3
